@@ -9,14 +9,17 @@
 
   <button type="button" value="<%= @invitation_code %>"
           data-controller="clipboard clone"
-          data-clone-destination-value="alerts"
           data-action="click->clipboard#copy click->clone#append">
     Copy to clipboard
 
     <template data-clone-target="source">
-      <div role="alert" class="border border-solid rounded-md m-4 p-4">
-        Copied to clipboard
-      </div>
+      <turbo-stream action="append" target="alerts">
+        <template>
+          <div role="alert" class="border border-solid rounded-md m-4 p-4">
+            Copied to clipboard
+          </div>
+        </template>
+      </turbo-stream>
     </template>
   </button>
 </fieldset>
